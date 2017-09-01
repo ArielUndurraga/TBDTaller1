@@ -1,7 +1,6 @@
 package cl.citiaps.spring.backend.rest;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.citiaps.spring.backend.entities.Actor;
 import cl.citiaps.spring.backend.entities.Film;
 import cl.citiaps.spring.backend.repository.ActorRepository;
+import cl.citiaps.spring.backend.repository.FilmRepository;
 
 @RestController  
 @RequestMapping("/actors")
@@ -23,6 +23,9 @@ public class ActorService {
 	
 	@Autowired
 	private ActorRepository actorRepository;
+	
+	@Autowired
+	private FilmRepository filmRepository;
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
@@ -47,6 +50,23 @@ public class ActorService {
 	@ResponseBody
 	public Actor create(@RequestBody Actor resource) {
 	     return actorRepository.save(resource);
+	}
+	
+	@RequestMapping(value = "/{id}/films/{id_film}", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseBody
+	public Actor update(@PathVariable("id") Integer id, @PathVariable("id_film") Integer id_film){
+		Actor actor = actorRepository.findOne(id);
+		Film film = filmRepository.findOne(id_film);
+		if (actor != null && film != null){
+			film.getActor().add(actor);
+			filmRepository.save(film);
+			return actor;
+			
+		}
+		else{
+			return null;
+		}
 	}
 	 
 }

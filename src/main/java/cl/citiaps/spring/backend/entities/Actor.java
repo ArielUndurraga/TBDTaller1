@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 
 
 /**
