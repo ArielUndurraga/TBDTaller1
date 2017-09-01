@@ -2,7 +2,11 @@ package cl.citiaps.spring.backend.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Set;
 
 
@@ -61,7 +65,8 @@ public class Film implements Serializable {
 			joinColumns = @JoinColumn(name="film_id"), 
 			inverseJoinColumns= @JoinColumn(name="actor_id")
 	)
-	private Set<Actor> actor;
+	@JsonIgnore
+	private List<Actor> actor;
 	
 	public int getFilmId() {
 		return filmId;
@@ -167,11 +172,11 @@ public class Film implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public Set<Actor> getActor() {
+	public List<Actor> getActor() {
 		return actor;
 	}
 
-	public void setActor(Set<Actor> actor) {
+	public void setActor(List<Actor> actor) {
 		this.actor = actor;
 	}
 

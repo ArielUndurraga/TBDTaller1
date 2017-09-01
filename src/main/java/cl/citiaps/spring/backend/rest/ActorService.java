@@ -1,5 +1,6 @@
 package cl.citiaps.spring.backend.rest;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,12 @@ public class ActorService {
 	public Actor findOne(@PathVariable("id") Integer id) {
 		return actorRepository.findOne(id);
 	}
-	/*
+	
 	@RequestMapping(value = "/{id}/films", method = RequestMethod.GET)
 	@ResponseBody
-	public Set<Film> getActorFilms(@PathVariable("id") Integer id){
+	public List<Film> getActorFilms(@PathVariable("id") Integer id){
 		return actorRepository.findOne(id).getFilms();
-	}*/
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
