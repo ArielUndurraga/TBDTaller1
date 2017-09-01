@@ -19,10 +19,10 @@ public class Film implements Serializable {
 	@Column(name="film_id", unique=true, nullable=false)
 	private int filmId;
 
-	@Column(name="title", nullable=false, length=100)
+	@Column(name="title", nullable=false, length=45)
 	private String title;
 
-	@Column(name="description", nullable=false)
+	@Column(name="description", nullable=false, length=45)
 	private String decription;
 	
 	@Column(name="release_year", nullable=false)
@@ -38,13 +38,13 @@ public class Film implements Serializable {
 	private int rentalDuration;
 	
 	@Column(name="rental_rate", nullable=false)
-	private double rentalRate;
+	private float rentalRate;
 	
 	@Column(name="length", nullable=false)
 	private int length;
 	
 	@Column(name="replacement_cost", nullable=false)
-	private double replacementCost;
+	private float replacementCost;
 	
 	@Column(name="rating", nullable=false, length=20)
 	private String rating;
@@ -111,11 +111,11 @@ public class Film implements Serializable {
 		this.rentalDuration = rentalDuration;
 	}
 
-	public double getRentalRate() {
+	public float getRentalRate() {
 		return rentalRate;
 	}
 
-	public void setRentalRate(double rentalRate) {
+	public void setRentalRate(float rentalRate) {
 		this.rentalRate = rentalRate;
 	}
 
@@ -127,11 +127,11 @@ public class Film implements Serializable {
 		this.length = length;
 	}
 
-	public double getReplacementCost() {
+	public float getReplacementCost() {
 		return replacementCost;
 	}
 
-	public void setReplacementCost(double replacementCost) {
+	public void setReplacementCost(float replacementCost) {
 		this.replacementCost = replacementCost;
 	}
 
